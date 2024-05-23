@@ -26,7 +26,7 @@ let notes = [
   {
     id: 2,
     name: "Ada Lovelace",
-    nuber: "39-44-5323523"
+    number: "39-44-5323523"
   },
   {
     id: 3,
