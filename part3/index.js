@@ -6,7 +6,8 @@ const app = express();
 // Luodaan mukautettu token, joka näyttää POST-pyynnön datan
 morgan.token('postData', (request, res) => {
   console.log("ilona postData request");
-    if (req.method === 'POST') {
+    if (request.method === 'POST') {
+      console.log("ilona post sisalla");
       return JSON.stringify(request.body);
     }
     return '-';
