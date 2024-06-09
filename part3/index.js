@@ -4,10 +4,10 @@ const morgan = require('morgan');
 const app = express();
 
 // Luodaan mukautettu token, joka näyttää POST-pyynnön datan
-morgan.token('postData', (req, res) => {
-  console.log("ilona postData");
+morgan.token('postData', (request, res) => {
+  console.log("ilona postData request");
     if (req.method === 'POST') {
-      return JSON.stringify(req.body);
+      return JSON.stringify(request.body);
     }
     return '-';
   });
