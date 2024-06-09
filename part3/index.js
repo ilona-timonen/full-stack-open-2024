@@ -35,10 +35,10 @@ app.get('/api/persons', (request, response) => {
 
 // Get information
 app.get('/info', (request, response) => {
-  console.log("ilona app.get");
+  console.log("ilona info");
   const currentTime = new Date();
   const info = `
-      <p>Phonebook has info for ${notes.length} people</p>
+      <p>Phonebook has info for ${notes.length} people joo</p>
       <p>${currentTime}</p>
   `;
   response.send(info);
