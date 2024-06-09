@@ -5,7 +5,7 @@ const app = express();
 
 // Luodaan mukautettu token, joka näyttää POST-pyynnön datan
 morgan.token('postData', (request, res) => {
-  console.log("ilona postData request");
+  console.log("ilona postData request ", request.body);
     if (request.method === 'POST') {
       console.log("ilona post sisalla");
       return JSON.stringify(request.body);
@@ -105,7 +105,7 @@ app.post('/api/persons', (request, response) => {
 });
 
 app.use((request, response) => {
-  console.log("ilona. use");
+  console.log("ilona.use");
   response.status(404).send({ error: 'Unknown endpoint' });
 });
 
