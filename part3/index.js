@@ -102,12 +102,14 @@ app.use((request, response) => {
 });
 // Custom middleware for logging incoming requests
 app.use((req, res, next) => {
+  console.log("ilona custom midleware")
   console.log(`${req.method} ${req.url}`);
   next();
 });
 
 // Example routes
 app.get('/api/persons', (req, res) => {
+  console.log("ilona example routes")
   res.send('GET request to /api/persons');
 });
 
