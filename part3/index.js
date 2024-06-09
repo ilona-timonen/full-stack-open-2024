@@ -5,6 +5,7 @@ const app = express();
 
 // Luodaan mukautettu token, joka näyttää POST-pyynnön datan
 morgan.token('postData', (req, res) => {
+  console.log("ilona postData");
     if (req.method === 'POST') {
       return JSON.stringify(req.body);
     }
@@ -41,10 +42,12 @@ let notes = [
 ]
 
 app.get('/api/persons', (request, response) => {
+    console.log("ilona app.get")
     response.json(notes)
   })
 
   app.get('/info', (request, response) => {
+    console.log("ilona app.get")
     const currentTime = new Date();
     const info = `
         <p>Phonebook has info for ${notes.length} people</p>
@@ -54,6 +57,7 @@ app.get('/api/persons', (request, response) => {
 });
 
 app.get('/api/persons/:id', (request, response) => {
+    console.log("ilonan app.get persons id");
     const id = Number(request.params.id);
     const note = notes.find(note => note.id === id);
     if (note) {
@@ -64,6 +68,7 @@ app.get('/api/persons/:id', (request, response) => {
 });
 
 app.delete('/api/persons/:id', (request, response) => {
+    console.log("ilonan delete")
     const id = Number(request.params.id);
     notes = notes.filter(note => note.id !== id);
     response.status(204).end();
@@ -71,7 +76,7 @@ app.delete('/api/persons/:id', (request, response) => {
 
 app.post('/api/persons', (request, response) => {
     const body = request.body;
-
+    console.log("ilona app.post"); 
     // Tarkistetaan, että pyynnön rungossa on sekä nimi että numero
     if (!body.name || !body.number) {
         return response.status(400).json({ 
