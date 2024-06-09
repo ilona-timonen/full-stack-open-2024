@@ -101,11 +101,11 @@ app.use((request, response) => {
   response.status(404).send({ error: 'Unknown endpoint' });
 });
 // Custom middleware for logging incoming requests
-app.use((req, res, next) => {
-  console.log("ilona custom midleware");
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("ilona custom midleware");
+//   console.log(`${req.method} ${req.url}`);
+//   next();
+// });
 
 // Example routes
 // app.get('/api/persons', (request, res) => {
