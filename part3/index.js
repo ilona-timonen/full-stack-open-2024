@@ -42,7 +42,7 @@ let notes = [
 ]
 
 app.get('/api/persons', (request, response) => {
-    //console.log("ilona app.get")
+    console.log("ilona app.get");
     response.json(notes)
   })
 
