@@ -98,18 +98,18 @@ app.post('/api/persons', (request, response) => {
 // Handle unknown endpoints
 app.use((request, response) => {
   console.log("ilona.use");
-  response.status(404).send({ error: 'Unknown endpointtti' });
+  response.status(404).send({ error: 'Unknown endpoint' });
 });
 // Custom middleware for logging incoming requests
 app.use((req, res, next) => {
-  console.log("ilona custom midleware")
+  console.log("ilona custom midleware");
   console.log(`${req.method} ${req.url}`);
   next();
 });
 
 // Example routes
 app.get('/api/persons', (req, res) => {
-  console.log("ilona example routes")
+  console.log("ilona example routes");
   res.send('GET request to /api/persons');
 });
 
