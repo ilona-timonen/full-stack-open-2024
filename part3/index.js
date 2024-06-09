@@ -7,7 +7,7 @@ const app = express();
 morgan.token('postData', (req, res) => {
   console.log("ilona postData");
     if (req.method === 'POST') {
-      return JSON.stringify(req.body);
+      return JSON.stringify(request.body);
     }
     return '-';
   });
