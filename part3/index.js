@@ -10,7 +10,9 @@ morgan.token('postData', (request, res) => {
       console.log("ilona post sisalla");
       return JSON.stringify(request.body);
     }
-    return '-';
+    //return '-';
+    console.log( "ilona ei post vaan tyhja");
+    return JSON.stringify(request.body);
   });
   app.use(cors());
 // Käytetään Expressin JSON-muotoisten pyyntöjen käsittelyyn
