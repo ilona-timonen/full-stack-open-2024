@@ -108,12 +108,13 @@ app.use((req, res, next) => {
 });
 
 // Example routes
-app.get('/api/persons', (req, res) => {
-  console.log("ilona example routes");
-  res.send('GET request to /api/persons');
-});
+// app.get('/api/persons', (request, res) => {
+//   console.log("ilona example routes");
+//   res.send('GET request to /api/persons');
+// });
 
-app.post('/api/persons', (req, res) => {
+app.post('/api/persons', (request, res) => {
+  console.log("ilona post /api/persons");
   res.send('POST request to /api/persons');
 });
 
