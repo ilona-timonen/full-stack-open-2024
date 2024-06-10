@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import personService from './services/persons';
-//import './App.css'; 
+//import personService from './api/persons'
+import './App.css'; 
 
 
 const Filter = ({ searchTerm, handleSearchChange }) => {
@@ -69,6 +70,7 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    console.log(personService)
     personService.getAll()
       .then(initialPersons => {
         setPersons(initialPersons);
