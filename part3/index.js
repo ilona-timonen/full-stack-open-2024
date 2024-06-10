@@ -24,7 +24,7 @@ let notes = [
 // Middleware to log incoming requests (for debugging)
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
-  console.log('Request Body:', req.body);
+  console.log('jooRequest Body:', req.body);
   next();
 });
 
