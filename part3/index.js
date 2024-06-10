@@ -96,9 +96,9 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.get('/', (request, response) => {
-//  response.json(notes);
-//});
+app.get('/', (request, response) => {
+  response.json(notes);
+});
 
 // Handle unknown endpoints
 app.use((request, response) => {
