@@ -3,22 +3,16 @@ const cors = require('cors');
 const morgan = require('morgan');
 const app = express();
 
-// Create custom token to log POST request data
-morgan.token('postData', (request) => {
-  if (request.method === 'POST') {
-    return JSON.stringify(request.body);
-  }
-  return '-';
+// Middleware to log request body
+morgan.token('body', (request) => {
+  return JSON.stringify(request.body);
 });
 
 app.use(cors());
 app.use(express.json());
 
-// Use Morgan for logging with tiny configuration and custom token
-app.use(morgan('tiny'));
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postData', {
-  skip: (req) => req.method !== 'POST'
-}));
+// Use Morgan for logging
+app.use(morgan(':method :url :status :response-time ms - :body'));
 
 let notes = [
   { id: 1, name: "Arto Hellas", number: "040-123456" },
@@ -101,11 +95,6 @@ app.use((request, response) => {
   response.status(404).send({ error: 'Unknown endpoint' });
 });
 
-
-//app.post('/api/persons', (request, res) => {
-//  console.log("ilona post /api/persons");
-//  res.send('POST request to /api/persons');
-//});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
