@@ -5,6 +5,7 @@ import './App.css';
 
 
 const Filter = ({ searchTerm, handleSearchChange }) => {
+  console.log("app Filter");
   return (
     <div>
       filter shown with <input value={searchTerm} onChange={handleSearchChange} />
@@ -13,6 +14,7 @@ const Filter = ({ searchTerm, handleSearchChange }) => {
 };
 
 const PersonForm = ({ newName, newNumber, handleNameChange, handleNumberChange, addPerson }) => {
+  console.log("app Personform");
   return (
     <form onSubmit={addPerson}>
       <div>
@@ -29,6 +31,7 @@ const PersonForm = ({ newName, newNumber, handleNameChange, handleNumberChange, 
 };
 
 const Persons = ({ persons, searchTerm, handleDelete }) => {
+  console.log("App Persons");
   return (
     <ul>
       {persons
@@ -41,6 +44,7 @@ const Persons = ({ persons, searchTerm, handleDelete }) => {
 };
 
 const Person = ({ person, handleDelete }) => {
+  console.log("App person");
   return (
     <li>
       {person.name} {person.number}
@@ -50,6 +54,7 @@ const Person = ({ person, handleDelete }) => {
 };
 
 const Notification = ({ message, error }) => {
+  console.log("app notification");
   if (message === null) {
     return null;
   }
@@ -62,6 +67,7 @@ const Notification = ({ message, error }) => {
 };
 
 const App = () => {
+  console.log("App App");
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
@@ -70,6 +76,7 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    console.log("App use effect");
     console.log(personService)
     personService.getAll()
       .then(initialPersons => {
@@ -81,18 +88,22 @@ const App = () => {
   }, []);
 
   const handleNameChange = (event) => {
+    console.log("app handleNameChange");
     setNewName(event.target.value);
   };
 
   const handleNumberChange = (event) => {
+    console.log("app handleNumber");
     setNewNumber(event.target.value);
   };
 
   const handleSearchChange = (event) => {
+    console.log("aoo hanldeSearchChange");
     setSearchTerm(event.target.value);
   };
 
   const addPerson = (event) => {
+    console.log("add Peson");
     event.preventDefault();
 
     const existingPerson = persons.find(person => person.name === newName);
@@ -122,6 +133,7 @@ const App = () => {
           });
       }
     } else {
+      console.log("app else add person");
       const personObject = {
         name: newName,
         number: newNumber
