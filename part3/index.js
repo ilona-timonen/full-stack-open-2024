@@ -5,6 +5,7 @@ const app = express();
 
 // Middleware to log request body
 morgan.token('body', (request) => {
+  console.log("body ");
   return JSON.stringify(request.body);
 });
 
