@@ -24,4 +24,9 @@ const remove = id => {
   return request.then(response => response.data);
 };
 
-export default { getAll, create, update, remove };
+//export default { getAll, create, update, remove };
+// Määritellään objekti muuttujaan
+const personService = { getAll, create, update, remove };
+
+// Viedään muuttuja oletuksena
+export default personService;
