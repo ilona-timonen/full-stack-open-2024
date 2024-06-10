@@ -4,21 +4,19 @@ const morgan = require('morgan');
 const app = express();
 
 // Create custom token to log POST request data
-morgan.token('postData', (request, res) => {
-  console.log("ilona postData request", request.body);
+morgan.token('postData', (request) => {
   if (request.method === 'POST') {
-    console.log("ilona post inside");
     return JSON.stringify(request.body);
   }
-  console.log("ilona not post but empty");
   return '-';
 });
 
 app.use(cors());
 app.use(express.json());
 
-// Use Morgan for logging
-app.use(morgan(':method :url :status :response-time ms - :postData'));
+// Use Morgan for logging with tiny configuration and custom token
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postData', { skip: (req, res) => req.method !== 'POST' }));
+app.use(morgan('tiny', { skip: (req, res) => req.method === 'POST' }));
 
 let notes = [
   { id: 1, name: "Arto Hellas", number: "040-123456" },
@@ -38,7 +36,7 @@ app.get('/info', (request, response) => {
   console.log("ilona info");
   const currentTime = new Date();
   const info = `
-      <p>Phonebook has info for ${notes.length} people joo</p>
+      <p>Phonebook has info for ${notes.length} people</p>
       <p>${currentTime}</p>
   `;
   response.send(info);
@@ -97,21 +95,9 @@ app.post('/api/persons', (request, response) => {
 
 // Handle unknown endpoints
 app.use((request, response) => {
-  console.log("ilona.use");
   response.status(404).send({ error: 'Unknown endpoint' });
 });
-// Custom middleware for logging incoming requests
-// app.use((req, res, next) => {
-//   console.log("ilona custom midleware");
-//   console.log(`${req.method} ${req.url}`);
-//   next();
-// });
 
-// Example routes
-// app.get('/api/persons', (request, res) => {
-//   console.log("ilona example routes");
-//   res.send('GET request to /api/persons');
-// });
 
 app.post('/api/persons', (request, res) => {
   console.log("ilona post /api/persons");
