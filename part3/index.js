@@ -15,8 +15,10 @@ app.use(cors());
 app.use(express.json());
 
 // Use Morgan for logging with tiny configuration and custom token
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postData', { skip: (req, res) => req.method !== 'POST' }));
-app.use(morgan('tiny', { skip: (req, res) => req.method === 'POST' }));
+app.use(morgan('tiny'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postData', {
+  skip: (req) => req.method !== 'POST'
+}));
 
 let notes = [
   { id: 1, name: "Arto Hellas", number: "040-123456" },
@@ -36,7 +38,7 @@ app.get('/info', (request, response) => {
   console.log("ilona info");
   const currentTime = new Date();
   const info = `
-      <p>Phonebook has info for ${notes.length} people</p>
+      <p>Phonebook has info for ${notes.length} people joo</p>
       <p>${currentTime}</p>
   `;
   response.send(info);
@@ -95,14 +97,15 @@ app.post('/api/persons', (request, response) => {
 
 // Handle unknown endpoints
 app.use((request, response) => {
+  console.log("ilona.use");
   response.status(404).send({ error: 'Unknown endpoint' });
 });
 
 
-app.post('/api/persons', (request, res) => {
-  console.log("ilona post /api/persons");
-  res.send('POST request to /api/persons');
-});
+//app.post('/api/persons', (request, res) => {
+//  console.log("ilona post /api/persons");
+//  res.send('POST request to /api/persons');
+//});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
