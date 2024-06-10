@@ -89,6 +89,16 @@ app.post('/api/persons', (request, response) => {
 
   response.json(note);
 });
+// Middleware to log incoming requests (for debugging)
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  console.log('Request Body:', req.body);
+  next();
+});
+
+app.get('/', (request, response) => {
+  response.json(notes);
+});
 
 // Handle unknown endpoints
 app.use((request, response) => {
