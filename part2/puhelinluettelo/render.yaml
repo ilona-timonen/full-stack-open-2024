@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: my-react-app
+    env: static
+    staticPublishPath: public
+    buildCommand: npm install && npm run build
