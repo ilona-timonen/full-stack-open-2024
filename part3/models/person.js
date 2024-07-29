@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 const url = process.env.MONGODB_URI;
+//const url = `mongodb+srv://fullstack:${password}@cluster0.rspoxgv.mongodb.net/phonebookApp?retryWrites=true&w=majority&appName=Cluster0`;
 console.log('connecting to', url);
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
