@@ -74,7 +74,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [notification, setNotification] = useState(null);
   const [error, setError] = useState(false);
-  //const [changeMessage, setChangeMessage] = useState('');
+  const [changeMessage, setChangeMessage] = useState('');
   const [nameError, setNameError] = useState(null);
 
   useEffect(() => {
