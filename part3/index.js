@@ -57,7 +57,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 // Delete person by ID
 app.delete('/api/persons/:id', (request, response, next) => {
-  Person.findByIdAndRemove(request.params.id)
+  Person.findByIdAndRemove(request.params.number)
     .then(() => {
       response.status(204).end();
     })
@@ -70,7 +70,7 @@ const postMorgan = morgan(':method :url :status :res[content-length] - :response
 // Add a new person
 app.post('/api/persons', postMorgan, (request, response, next) => {
   const body = request.body;
-  console.log('Emmem addia');
+  console.log('Ennen addia');
   if (!body.name || !body.number) {
     return response.status(400).json({
       error: 'name or number is missing'
