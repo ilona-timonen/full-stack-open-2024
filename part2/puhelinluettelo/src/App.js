@@ -150,10 +150,10 @@ const App = () => {
           }, 5000);
         })
         .catch(error => {
-          setChangeMessage(`[error] ${error.response.data.error}`)
-        })
+          setChangeMessage(`[error] ${error.response.data.error}`);
+        });
       }         
-  }
+  };
 
   const handleDelete = (id) => {
     const personToDelete = persons.find(person => person.id === id);
