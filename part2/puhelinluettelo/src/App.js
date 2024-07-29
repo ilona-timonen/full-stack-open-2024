@@ -105,15 +105,19 @@ const App = () => {
   };
 
   const addPerson = (event) => {
-    console.log("add Peson");
+    console.log("add Person");
     event.preventDefault();
 
     // Validation
+    console.log("yläpuolella");
     if (newName.length < 3) {
+      console.log("iffin sisällä");
       setNameError('Person validation failed: name is shorter than the minimum allowed length (3)');
+      setNotification(`Added minäpäs hee`);
       return;
     } else {
-      setNameError(null);
+      setNameError("jiihaa");
+      //setNameError(null);
     }
 
     const existingPerson = persons.find(person => person.name === newName);
