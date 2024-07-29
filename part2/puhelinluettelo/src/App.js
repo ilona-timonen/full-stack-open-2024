@@ -75,6 +75,7 @@ const App = () => {
   const [notification, setNotification] = useState(null);
   const [error, setError] = useState(false);
   const [changeMessage, setChangeMessage] = useState('');
+  const [nameError, setNameError] = useState(null);
 
   useEffect(() => {
     console.log("App use effect");
@@ -106,6 +107,14 @@ const App = () => {
   const addPerson = (event) => {
     console.log("add Peson");
     event.preventDefault();
+
+    // Validation
+    if (newName.length < 3) {
+      setNameError('Person validation failed: name is shorter than the minimum allowed length (3)');
+      return;
+    } else {
+      setNameError(null);
+    }
 
     const existingPerson = persons.find(person => person.name === newName);
     if (existingPerson) {
@@ -189,6 +198,7 @@ const App = () => {
         handleNameChange={handleNameChange} 
         handleNumberChange={handleNumberChange} 
         addPerson={addPerson} 
+        nameError={nameError} 
       />
 
       <h3>Numbers</h3>
