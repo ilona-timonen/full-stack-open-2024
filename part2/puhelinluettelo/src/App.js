@@ -74,7 +74,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [notification, setNotification] = useState(null);
   const [error, setError] = useState(false);
-  const [changeMessage, setChangeMessage] = useState('');
+  //const [changeMessage, setChangeMessage] = useState('');
   const [nameError, setNameError] = useState(null);
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const App = () => {
     if (newName.length < 3) {
       console.log("iffin sisällä");
       setNameError('Person validation failed: name is shorter than the minimum allowed length (3)');
-      setNotification(`Added minäpäs hee`);
+      //setNotification(`Added minäpäs hee`);
       return;
     } else {
       setNameError("jiihaa");
