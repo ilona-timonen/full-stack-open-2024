@@ -70,7 +70,7 @@ const postMorgan = morgan(':method :url :status :res[content-length] - :response
 // Add a new person
 app.post('/api/persons', postMorgan, (request, response, next) => {
   const body = request.body;
-
+  console.log('Emmem addia');
   if (!body.name || !body.number) {
     return response.status(400).json({
       error: 'name or number is missing'
