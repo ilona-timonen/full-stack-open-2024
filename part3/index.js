@@ -57,9 +57,13 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 // Delete person by ID
 app.delete('/api/persons/:id', (request, response, next) => {
-  Person.findByIdAndRemove(request.params.number)
-    .then(() => {
-      response.status(204).end();
+  Person.findByIdAndDelete(request.params.id)
+    .then(result => {
+      if (result) {
+        response.status(204).end();
+      } else {
+        response.status(404).json({ error: 'Person not found' });
+      }
     })
     .catch(error => next(error));
 });
