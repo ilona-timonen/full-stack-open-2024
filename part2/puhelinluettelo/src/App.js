@@ -117,8 +117,7 @@ const App = () => {
       //setNotification(`Added minäpäs hee`);
       return;
     } else {
-      setNameError("jiihaa");
-      //setNameError(null);
+      setNameError(null);
     }
 
     const existingPerson = persons.find(person => person.name === newName);
