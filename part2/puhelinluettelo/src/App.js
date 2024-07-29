@@ -13,12 +13,13 @@ const Filter = ({ searchTerm, handleSearchChange }) => {
   );
 };
 
-const PersonForm = ({ newName, newNumber, handleNameChange, handleNumberChange, addPerson }) => {
+const PersonForm = ({ newName, newNumber, handleNameChange, handleNumberChange, addPerson, nameError }) => {
   console.log("app Personform");
   return (
     <form onSubmit={addPerson}>
       <div>
         name: <input value={newName} onChange={handleNameChange} />
+        {nameError && <div className="error">{nameError}</div>}
       </div>
       <div>
         number: <input value={newNumber} onChange={handleNumberChange} />
